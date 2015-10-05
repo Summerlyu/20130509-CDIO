@@ -1,0 +1,44 @@
+#wrapper{ 
+  margin:10px;  
+}
+
+#title{
+  font-size:14px;
+  font-weight:bold;
+  width:100%;
+  border-bottom:1px solid gray; 
+  padding-border:2px;
+}
+
+#listtable{
+  width:100%;
+  margin-top:10px;
+}
+
+#listtable th{
+  border-bottom:1px solid black;
+}
+
+#listtable td{
+  text-align:center;
+  border-bottom:1px dotted gray;
+}
+
+.notFound{
+  color:blue;
+  text-align:center;
+  margin-top:20px;
+}
+
+#pageInfo{
+  text-align:right;
+  padding-right:10px;
+  font-family:verdana;
+  margin-top:3px;
+}
+
+.linkspan{
+   color:blue;
+   text-decoration:underline;
+   cursor:hand; 
+}

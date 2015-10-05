@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <!-- 设置为开发模式，系统运行速度将降低，但是提供的出错提示更加直观，一般用于系统调试的时候使用 -->
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value="do"/>
+    <constant name="struts.ui.theme" value="simple"></constant>
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+    <constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+
+    <package name="hotelsys-default" namespace="/" extends="struts-default">
+         <interceptors>
+            
+            <interceptor name="authentication" class="edu.fjnu.hotelsys.interceptor.AuthenticationInterceptor"/>
+            
+            <!-- 应用在需要登录方可进行操作的action -->
+            <interceptor-stack name="user">
+                <interceptor-ref name="authentication"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
+            
+            <!-- 应用在需要登录方可进行操作的,同时是表单提交的action -->
+            <interceptor-stack name="user-submit">
+                <interceptor-ref name="user"/>
+            </interceptor-stack> 
+            
+            <!-- 应用在不需要登录即可进行操作的action -->
+            <interceptor-stack name="guest">
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack> 
+                             
+         </interceptors>
+         
+         <!-- 默认拦截器，如果一个action没有显式指定拦截器，则默认用这个 -->
+         <default-interceptor-ref name="user"/> 
+         
+         <!-- 全局result可以为所有action共用 -->
+         <global-results>
+                <result name="error">/error.jsp</result>
+                <result name="gotoLoginAction" type="redirectAction">
+                   <param name="namespace">/security</param>
+                   <param name="actionName">gotoLogin</param>
+                </result>
+         </global-results>
+         
+         <!-- 
+         <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+         </global-exception-mappings> 
+          -->
+          
+    </package>
+
+    <include file="security_module.xml"/>
+    <include file="room_module.xml"/>
+    <include file="hotel_module.xml"/>           
+
+
+</struts>

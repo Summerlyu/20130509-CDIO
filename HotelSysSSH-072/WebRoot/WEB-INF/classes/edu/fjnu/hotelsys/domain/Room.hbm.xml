@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.fjnu.hotelsys.domain">
+
+   <class name="Room" table="room">
+   
+      <id name="roomId" column="room_id" type="int" >
+         <generator class="sequence">
+            <param name="sequence">seq_room</param>
+         </generator>
+      </id>
+      <property name="roomNo" column="room_no" type="string" length="10" not-null="true"></property>
+      <property name="roomStatus" column="room_status" type="string" length="1" not-null="true"></property>
+      <property name="roomType" column="room_type" type="string" length="1" not-null="true"></property>
+      <property name="roomMemo" column="room_memo" type="string" length="200"></property>
+      <property name="roomEquipStr" column="room_equip" type="string" length="20" not-null="true"/>
+      
+      <many-to-one name="hotel" class="Hotel" lazy="false" column="hotel_no" fetch="join"></many-to-one>
+      
+   </class>
+
+</hibernate-mapping>

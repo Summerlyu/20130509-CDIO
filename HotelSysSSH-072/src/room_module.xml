@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+   
+    <package name="hotel-room" namespace="/room" extends="hotelsys-default">
+       <action name="*_room" class="RoomAction" method="{1}">
+          <result name="inputPage">/jsps/room/input_room.jsp</result>
+          <result name="loadAllAction" type="redirectAction">loadAll_room</result>
+          <result name="loadAllPage">/jsps/room/loadall_room.jsp</result>
+          <result name="updatePage">/jsps/room/update_room.jsp</result>
+          <result name="loadPagedRoomPage">/jsps/room/load_paged_rooms.jsp</result>
+       </action>
+    </package>
+    
+
+</struts>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <!-- 设置为开发模式，系统运行速度将降低，但是提供的出错提示更加直观，一般用于系统调试的时候使用 -->
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value="do"/>
+    <constant name="struts.ui.theme" value="simple"></constant>
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+
+    <!-- 
+     struts独立处理单位，被叫做action,其在MVC模式中，地位为controller,类似于jsp/servlet编程中的servlet的地位。
+             包是由若干个业务相关,功能相近的action构成的。  
+             包名: 在struts2中，唯一标识一个包。
+             包的命名空间: web访问地址，网页上的用户，可以通过命名空间来定位这个包的存在，从而最终定位到其中的action. 
+             包可以被继承，从而拥有父包所有的配置。        
+    -->
+    <package name="hotel-default" namespace="/security" extends="struts-default">
+       <!-- 
+                            一个action如果没有指定具体的拦截器stack,默认使用是defaultStack 
+                            一个action没有指定method，则默认运行的execute方法。
+       -->
+       <action name="gotoLogin" class="edu.fjnu.hotelsys.controller.SecurityAction" method="gotoLogin">
+          <result name="loginPage">/jsps/login.jsp</result>
+       </action>
+       <!-- 
+                       一个action没有指定类名,则默认为ActionSupport,ActionSupport中带有一个execute方法，执行完毕，返回success
+                       一个result没有指定自己的名字，默认为success。没有指定自己的类型，默认为dispatcher, 也就是forward
+        -->
+       <action name="doit">
+          <result>/jsps/login.jsp</result>
+       </action>
+       
+       <action name="login"  class="edu.fjnu.hotelsys.controller.SecurityAction" method="login">
+          <result name="mainAction" type="redirectAction">gotoMain</result>
+          <result name="loginPage">/jsps/login.jsp</result>
+       </action>
+       
+       <action name="gotoMain" class="edu.fjnu.hotelsys.controller.SecurityAction" method="gotoMain">
+          <result name="mainPage">/jsps/main.jsp</result>
+       </action>
+       
+       <action name="logout" class="edu.fjnu.hotelsys.controller.SecurityAction" method="logout">
+          <result name="gotoLoginAction" type="redirectAction">gotoLogin</result>
+       </action>
+       
+    </package>
+    
+
+
+</struts>

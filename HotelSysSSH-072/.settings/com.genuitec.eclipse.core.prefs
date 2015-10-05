@@ -1,0 +1,4 @@
+#Thu Mar 07 08:54:33 CST 2013
+eclipse.preferences.version=1
+validator.Checked=WebRoot/jsps/hotel/list_hotel.jsp,WebRoot/jsps/room/list_room.jsp,WebRoot/jsps/room/update_room.jsp
+validator.Unchecked=

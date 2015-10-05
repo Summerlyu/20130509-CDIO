@@ -1,0 +1,43 @@
+body,tr,td,th,div,span,ul,li,input{
+    font-size:12px;
+    font-family:verdana;
+    padding:0px;
+    margin:0px;   
+}
+
+#header{
+   height:80px;	
+   border-bottom:2px solid blue;
+}
+
+#productName{
+   font-size:30px;
+   font-weight:bold;
+   float:left;
+   padding:10px;
+   margin-top:20px;
+}
+
+#navigator{
+   width:130px;
+   padding:10px;
+   height:530px;
+   border-right:2px solid blue;
+   float:left;	
+}
+
+#navigator .menuitem{
+   font-size:14px;
+   text-align:center;
+   margin-top:8px;
+}
+
+#navigator .seperator{
+   border-bottom:1px dotted blue;
+   margin-top:10px;
+   margin-bottom:10px;
+}
+
+#content{
+   float:left;
+}

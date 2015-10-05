@@ -1,0 +1,50 @@
+oracle的伪列 rowid,rownum
+
+我们可以使用rowid完成记录的精确物理定位
+我们可以使用rownum给查询到的结果进行编号，从而支持分页操作，只显示部分结果。
+
+rownum不支持大于运算，只支持小于运算 
+
+
+
+分页操作
+
+ 本质： 显示某种查询条件下生成的记录集的一部分，或者说某个范围的记录组合。
+
+ 比如找到所有的"普双人间",假设有250间，现在每页显示12条记录，显示的是第3页，那么这时候，我们取查询结果的，
+ 第25-36条进行显示。
+ 
+oracle分页较为复杂，使用了rownum来实现，sqlserver 使用top, mysql使用limit.
+
+
+oracle分页模版
+
+ select *
+ from
+ (
+  select rownum rn, a.*
+  from
+  (
+   select room_id,room_no
+   from room
+   order by room_no
+   ) a
+   where rownum<=36
+ )
+ where rn>=25
+ 
+ 推导结果：
+ 
+ select *
+ from
+ (
+  select rownum rn, a.*
+  from
+  (
+     @yoursql
+   ) a
+   where rownum<=@end
+ )
+ where rn>=@begin
+ 
+ select * from (select rownum rn, a.* from (@yoursql) a where rownum<=@end ) where rn>=@begin

@@ -1,0 +1,19 @@
+#wrapper{ 
+  margin:10px;  
+}
+
+#f_title{
+  font-size:12px;
+  font-weight:bold;
+  width:100%;
+  border-bottom:1px solid gray; 
+  padding-border:2px;
+}
+
+.f_row{
+  margin-top:8px;
+}
+
+.f_row span,.f_row input{
+  font-size:12px;
+}

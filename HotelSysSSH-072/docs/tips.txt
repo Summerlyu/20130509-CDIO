@@ -1,0 +1,30 @@
+1.使用proxool连接池提高数据库访问效率，性能大约提高100倍。
+ 
+2.使用c:url标签来完成资源的绝对路径获取。
+    由于大量的forward操作的存在，web资源的路径呈现不确定的状态
+  比如：
+  /hotel/a/b ->(forward)-> /jsps/hotel/input_hotel.jsp  => /hotel/a/input_hotel.jsp
+  /hotel/a/m/x/hotelMgr ->(forward)-> /jsps/hotel/input_hotel.jsp  => /hotel/a/m/x/input_hotel.jsp  
+  
+  所以指定web资源所在位置，如果使用相对路径，则面临找不到资源的风险，所以绝对路径将成为定位WEB资源的首选方案。
+  
+ 绝对路径写法： /application-name/jsps/hotel/input_hotel.jsp
+ 
+ <c:url>以webroot为/，书写绝对路径。
+ 
+3) 使用iframe技术在一个窗口中嵌入窗口，用户可以在链接中，通过target属性的设置，来设置显示窗口
+
+4) jsp include指令  <%@ include file="  "/>
+   jsp include动作 <jsp:include page=""/>
+   
+       都可以达到引入另外页面数据进入本页面的目的，这个本质上是servlet include协作。
+       
+5) 一般来说一个输入界面需要页面级别的数据准备，所以可能需要一个数据库的访问，这些一般放置在servlet的input方法。
+
+6) request.getParameterValues(key),可以获得提交的复合选项表单数据字段，返回的结果是String[].
+
+7) 使用taglibs.jsp实现标签库集中导入书写，便于批量管理。
+
+8) blob,clob字段
+   blob: binary large object      保存二进制数据，比如图像，视频，音乐等。
+   clob: character large object   字符大对象 ，保存海量字符数据，比如小说，毕业论文等等，varchar2只能保存8000个英文字符。

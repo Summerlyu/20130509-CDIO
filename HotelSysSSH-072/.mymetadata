@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="HotelSysSSH-072"
+  id="myeclipse.1353717752140"
+  context-root="/hotelssh"
+  j2ee-spec="5.0"
+  archive="HotelSysSSH-072.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

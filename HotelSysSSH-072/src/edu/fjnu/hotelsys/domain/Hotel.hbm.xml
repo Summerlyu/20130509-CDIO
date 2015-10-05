@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="edu.fjnu.hotelsys.domain">
+
+   <class name="Hotel" table="hotel">
+      <id name="hotelNo" column="hotel_no" type="int" >
+         <generator class="sequence">
+            <param name="sequence">seq_hotel</param>
+         </generator>
+      </id>
+      <property name="hotelName" column="hotel_name" type="string" length="30" not-null="true"></property>
+      <property name="hotelAddr" column="hotel_addr" type="string" length="50" not-null="true"></property>
+      <property name="hotelPhone" column="hotel_phone" type="string" length="30"></property>
+      <property name="hotelRoomCount" column="hotel_room_count" type="int"></property>
+      <property name="hotelPic" lazy="true" column="hotel_pic" type="org.springframework.orm.hibernate3.support.BlobByteArrayType"></property> 
+   </class>
+
+</hibernate-mapping>
